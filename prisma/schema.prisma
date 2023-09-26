@@ -25,3 +25,8 @@ model Usuario {
 
   @@map("usuario")
 }
+
+model Aluno {
+  id String @id @default(uuid()) @db.Uuid
+  nome String
+}
