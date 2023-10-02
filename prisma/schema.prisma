@@ -10,23 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuario {
-  id String @id
-  nomeCompleto String @db.VarChar(30) @map("nome_completo")
-  idade Int?
-  email String @db.VarChar(50) @unique
-  password String
+model User {
+  id String @id @db.Uuid @default(uuid())
+  username String @db.VarChar(30) @unique
+  password String @db.VarChar(20)
+  enable Boolean @default(true)
 
-  endereco String?
-  ativo Boolean @default(true)
-  dtNascimento DateTime @db.Date @map("dt_nascimento")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
 
-  dthrCriacao DateTime @default(now()) @map("dthr_criacao")
-
-  @@map("usuario")
-}
-
-model Aluno {
-  id String @id @default(uuid()) @db.Uuid
-  nome String
+  @@map("user")
 }
