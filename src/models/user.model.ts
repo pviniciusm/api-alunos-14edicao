@@ -13,12 +13,15 @@ export class User {
         return this._id;
     }
 
+    // getter
     public get username() {
         return this._username;
     }
+
     public get password() {
         return this._password;
     }
+
     public get enable() {
         return this._enable;
     }
